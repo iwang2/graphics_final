@@ -369,6 +369,30 @@ void my_main() {
         //printf("Display");
         display(t);
         break;
+      case LIGHT:
+	light[COLOR][RED] = op[i].op.light.c[0];
+	light[COLOR][GREEN] = op[i].op.light.c[1];
+	light[COLOR][BLUE] = op[i].op.light.c[2];
+	light[LOCATION][0] = op[i].op.light.p->l[0];
+	light[LOCATION][1] = op[i].op.light.p->l[1];
+	light[LOCATION][2] = op[i].op.light.p->l[2];
+	break;
+      case CONSTANTS:
+	areflect[RED] = op[i].op.constants.p->r[0];
+	areflect[GREEN] = op[i].op.constants.p->g[0];
+	areflect[BLUE] = op[i].op.constants.p->b[0];
+	dreflect[RED] = op[i].op.constants.p->r[1];
+	dreflect[GREEN] = op[i].op.constants.p->g[1];
+	dreflect[BLUE] = op[i].op.constants.p->b[1];
+	sreflect[RED] = op[i].op.constants.p->r[2];
+	sreflect[GREEN] = op[i].op.constants.p->g[2];
+	sreflect[BLUE] = op[i].op.constants.p->b[2];
+	break;
+      case AMBIENT:
+	ambient.red = op[i].op.ambient.c[0];
+	ambient.green = op[i].op.ambient.c[1];
+	ambient.blue = op[i].op.ambient.c[2];
+	break;
       } //end opcode switch
     printf("\n");
   }//end operation loop
