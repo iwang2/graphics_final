@@ -373,7 +373,7 @@ void my_main() {
 	  tmp->lastcol = 0;
 	  break;
 	case OCTAHEDRON:
-	  if ( op[i].op.box.constants != NULL ) {
+	  if ( op[i].op.octahedron.constants != NULL ) {
 	    areflect[RED] = op[i].op.octahedron.constants->s.c->r[0];
 	    areflect[GREEN] = op[i].op.octahedron.constants->s.c->g[0];
 	    areflect[BLUE] = op[i].op.octahedron.constants->s.c->b[0];
@@ -389,6 +389,28 @@ void my_main() {
 		   op[i].op.octahedron.d[1],
 		   op[i].op.octahedron.d[2],
 		   op[i].op.octahedron.s);
+	  matrix_mult( peek(systems), tmp );
+	  draw_polygons( tmp, t, zb, view, light, ambient,
+			 areflect, dreflect, sreflect);
+	  tmp->lastcol = 0;
+	  break;
+	case TETRAHEDRON:
+	  if ( op[i].op.tetrahedron.constants != NULL ) {
+	    areflect[RED] = op[i].op.tetrahedron.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.tetrahedron.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.tetrahedron.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.tetrahedron.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.tetrahedron.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.tetrahedron.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.tetrahedron.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.tetrahedron.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.tetrahedron.constants->s.c->b[2];
+	  }
+	  add_tetra(tmp,
+		    op[i].op.tetrahedron.d[0],
+		    op[i].op.tetrahedron.d[1],
+		    op[i].op.tetrahedron.d[2],
+		    op[i].op.tetrahedron.s);
 	  matrix_mult( peek(systems), tmp );
 	  draw_polygons( tmp, t, zb, view, light, ambient,
 			 areflect, dreflect, sreflect);

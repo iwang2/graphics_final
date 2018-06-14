@@ -257,10 +257,19 @@ void add_octa ( struct matrix * polygons,
   add_polygon(polygons, x, y2, z, x1, y1, z1, x1, y1, z2);
   add_polygon(polygons, x, y2, z, x1, y1, z2, x2, y1, z2);
   add_polygon(polygons, x, y2, z, x2, y1, z2, x2, y1, z1);
-
-  printf("polygons added for octahedron\n");
 }
 
+void add_tetra( struct matrix * polygons,
+		double x, double y, double z, double s ){
+  double
+    x1 = x + s/2, z1 = z + sqrt(6.0)*s/3,
+    x2 = x - s/2, y1 = y + sqrt(6.0)*s/3, z2 = z + sqrt(6.0)*s/4;
+  add_polygon(polygons, x, y, z, x2, y, z1, x1, y, z1);
+  add_polygon(polygons, x, y1, z2, x, y, z, x2, y, z1);
+  add_polygon(polygons, x, y1, z2, x1, y, z1, x2, y, z1);
+  add_polygon(polygons, x, y1, z2, x2, y, z1, x, y, z);
+}
+  
 /*======== void add_sphere() ==========
   Inputs:   struct matrix * points
   double cx

@@ -29,7 +29,7 @@
 %token <val> DOUBLE
 %token <string> LIGHT AMBIENT
 %token <string> CONSTANTS SAVE_COORDS CAMERA
-%token <string> SPHERE TORUS BOX OCTAHEDRON LINE CS MESH TEXTURE
+%token <string> SPHERE TORUS BOX OCTAHEDRON TETRAHEDRON LINE CS MESH TEXTURE
 %token <string> STRING
 %token <string> SET MOVE SCALE ROTATE BASENAME SAVE_KNOBS TWEEN FRAMES VARY
 %token <string> PUSH POP SAVE GENERATE_RAYFILES
@@ -70,6 +70,33 @@ OCTAHEDRON STRING DOUBLE DOUBLE DOUBLE DOUBLE
   op[lastop].op.octahedron.s = $6;
   c = (struct constants *)malloc(sizeof(struct constants));
   op[lastop].op.octahedron.constants = add_symbol($2,SYM_CONSTANTS,c);
+  lastop++;
+}|
+
+TETRAHEDRON DOUBLE DOUBLE DOUBLE DOUBLE
+{
+  lineno++;
+  op[lastop].opcode = TETRAHEDRON;
+  op[lastop].op.tetrahedron.d[0] = $2;
+  op[lastop].op.tetrahedron.d[1] = $3;
+  op[lastop].op.tetrahedron.d[2] = $4;
+  op[lastop].op.tetrahedron.d[3] = 0;
+  op[lastop].op.tetrahedron.s = $5;
+  op[lastop].op.tetrahedron.constants = NULL;
+  lastop++;
+}|
+
+TETRAHEDRON STRING DOUBLE DOUBLE DOUBLE DOUBLE
+{
+  lineno++;
+  op[lastop].opcode = TETRAHEDRON;
+  op[lastop].op.tetrahedron.d[0] = $3;
+  op[lastop].op.tetrahedron.d[1] = $4;
+  op[lastop].op.tetrahedron.d[2] = $5;
+  op[lastop].op.tetrahedron.d[3] = 0;
+  op[lastop].op.tetrahedron.s = $6;
+  c = (struct constants *)malloc(sizeof(struct constants));
+  op[lastop].op.tetrahedron.constants = add_symbol($2,SYM_CONSTANTS,c);
   lastop++;
 }|
 
