@@ -293,14 +293,18 @@ void my_main() {
       switch (op[i].opcode)
 	{
 	case SPHERE:
-	  /* printf("Sphere: %6.2f %6.2f %6.2f r=%6.2f", */
-	  /* 	 op[i].op.sphere.d[0],op[i].op.sphere.d[1], */
-	  /* 	 op[i].op.sphere.d[2], */
-	  /* 	 op[i].op.sphere.r); */
-	  if (op[i].op.sphere.constants != NULL)
-	    {
-	      //printf("\tconstants: %s",op[i].op.sphere.constants->name);
-	    }
+	  if (op[i].op.sphere.constants != NULL) {
+	    //printf("\tconstants: %s",op[i].op.sphere.constants->name);
+	    areflect[RED] = op[i].op.sphere.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.sphere.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.sphere.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.sphere.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.sphere.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.sphere.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.sphere.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.sphere.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.sphere.constants->s.c->b[2];
+	  }
 	  if (op[i].op.sphere.cs != NULL)
 	    {
 	      //printf("\tcs: %s",op[i].op.sphere.cs->name);
@@ -315,14 +319,18 @@ void my_main() {
 	  tmp->lastcol = 0;
 	  break;
 	case TORUS:
-	  /* printf("Torus: %6.2f %6.2f %6.2f r0=%6.2f r1=%6.2f", */
-	  /* 	 op[i].op.torus.d[0],op[i].op.torus.d[1], */
-	  /* 	 op[i].op.torus.d[2], */
-	  /* 	 op[i].op.torus.r0,op[i].op.torus.r1); */
-	  if (op[i].op.torus.constants != NULL)
-	    {
-	      //printf("\tconstants: %s",op[i].op.torus.constants->name);
-	    }
+	  if (op[i].op.torus.constants != NULL) {
+	    //printf("\tconstants: %s",op[i].op.torus.constants->name);
+	    areflect[RED] = op[i].op.torus.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.torus.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.torus.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.torus.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.torus.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.torus.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.torus.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.torus.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.torus.constants->s.c->b[2];
+	  }
 	  if (op[i].op.torus.cs != NULL)
 	    {
 	      //printf("\tcs: %s",op[i].op.torus.cs->name);
@@ -338,15 +346,18 @@ void my_main() {
 	  tmp->lastcol = 0;
 	  break;
 	case BOX:
-	  /* printf("Box: d0: %6.2f %6.2f %6.2f d1: %6.2f %6.2f %6.2f", */
-	  /* 	 op[i].op.box.d0[0],op[i].op.box.d0[1], */
-	  /* 	 op[i].op.box.d0[2], */
-	  /* 	 op[i].op.box.d1[0],op[i].op.box.d1[1], */
-	  /* 	 op[i].op.box.d1[2]); */
-	  if (op[i].op.box.constants != NULL)
-	    {
-	      //printf("\tconstants: %s",op[i].op.box.constants->name);
-	    }
+	  if (op[i].op.box.constants != NULL) {
+	    //printf("\tconstants: %s",op[i].op.box.constants->name);
+	    areflect[RED] = op[i].op.box.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.box.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.box.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.box.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.box.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.box.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.box.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.box.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.box.constants->s.c->b[2];
+	  }
 	  if (op[i].op.box.cs != NULL)
 	    {
 	      //printf("\tcs: %s",op[i].op.box.cs->name);
@@ -361,16 +372,41 @@ void my_main() {
 			areflect, dreflect, sreflect);
 	  tmp->lastcol = 0;
 	  break;
+	case OCTAHEDRON:
+	  if ( op[i].op.box.constants != NULL ) {
+	    areflect[RED] = op[i].op.octahedron.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.octahedron.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.octahedron.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.octahedron.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.octahedron.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.octahedron.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.octahedron.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.octahedron.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.octahedron.constants->s.c->b[2];
+	  }
+	  add_octa(tmp,
+		   op[i].op.octahedron.d[0],
+		   op[i].op.octahedron.d[1],
+		   op[i].op.octahedron.d[2],
+		   op[i].op.octahedron.s);
+	  matrix_mult( peek(systems), tmp );
+	  draw_polygons( tmp, t, zb, view, light, ambient,
+			 areflect, dreflect, sreflect);
+	  tmp->lastcol = 0;
+	  break;
 	case LINE:
-	  /* printf("Line: from: %6.2f %6.2f %6.2f to: %6.2f %6.2f %6.2f",*/
-	  /* 	 op[i].op.line.p0[0],op[i].op.line.p0[1], */
-	  /* 	 op[i].op.line.p0[1], */
-	  /* 	 op[i].op.line.p1[0],op[i].op.line.p1[1], */
-	  /* 	 op[i].op.line.p1[1]); */
-	  if (op[i].op.line.constants != NULL)
-	    {
-	      //printf("\n\tConstants: %s",op[i].op.line.constants->name);
-	    }
+	  if (op[i].op.line.constants != NULL) {
+	    //printf("\n\tConstants: %s",op[i].op.line.constants->name);
+	    areflect[RED] = op[i].op.line.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.line.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.line.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.line.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.line.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.line.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.line.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.line.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.line.constants->s.c->b[2];
+	  }
 	  if (op[i].op.line.cs0 != NULL)
 	    {
 	      //printf("\n\tCS0: %s",op[i].op.line.cs0->name);
@@ -465,6 +501,19 @@ void my_main() {
 	case DISPLAY:
 	  //printf("Display");
 	  display(t);
+	  break;
+	case LIGHT:
+	  light[COLOR][RED] = op[i].op.light.c[0];
+	  light[COLOR][GREEN] = op[i].op.light.c[1];
+	  light[COLOR][BLUE] = op[i].op.light.c[2];
+	  light[LOCATION][0] = op[i].op.light.p->s.l->l[0];
+	  light[LOCATION][1] = op[i].op.light.p->s.l->l[1];
+	  light[LOCATION][2] = op[i].op.light.p->s.l->l[2];
+	  break;
+	case AMBIENT:
+	  ambient.red = op[i].op.ambient.c[0];
+	  ambient.green = op[i].op.ambient.c[1];
+	  ambient.blue = op[i].op.ambient.c[2];
 	  break;
 	} //end opcode switch
       printf("\n");
