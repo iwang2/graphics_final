@@ -416,6 +416,28 @@ void my_main() {
 			 areflect, dreflect, sreflect);
 	  tmp->lastcol = 0;
 	  break;
+	case ICOSAHEDRON:
+	  if ( op[i].op.icosahedron.constants != NULL ) {
+	    areflect[RED] = op[i].op.icosahedron.constants->s.c->r[0];
+	    areflect[GREEN] = op[i].op.icosahedron.constants->s.c->g[0];
+	    areflect[BLUE] = op[i].op.icosahedron.constants->s.c->b[0];
+	    dreflect[RED] = op[i].op.icosahedron.constants->s.c->r[1];
+	    dreflect[GREEN] = op[i].op.icosahedron.constants->s.c->g[1];
+	    dreflect[BLUE] = op[i].op.icosahedron.constants->s.c->b[1];
+	    sreflect[RED] = op[i].op.icosahedron.constants->s.c->r[2];
+	    sreflect[GREEN] = op[i].op.icosahedron.constants->s.c->g[2];
+	    sreflect[BLUE] = op[i].op.icosahedron.constants->s.c->b[2];
+	  }
+	  add_icosa(tmp,
+		    op[i].op.icosahedron.d[0],
+		    op[i].op.icosahedron.d[1],
+		    op[i].op.icosahedron.d[2],
+		    op[i].op.icosahedron.s);
+	  matrix_mult( peek(systems), tmp );
+	  draw_polygons( tmp, t, zb, view, light, ambient,
+			 areflect, dreflect, sreflect);
+	  tmp->lastcol = 0;
+	  break;
 	case LINE:
 	  if (op[i].op.line.constants != NULL) {
 	    //printf("\n\tConstants: %s",op[i].op.line.constants->name);

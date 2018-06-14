@@ -269,6 +269,34 @@ void add_tetra( struct matrix * polygons,
   add_polygon(polygons, x, y1, z2, x1, y, z1, x2, y, z1);
   add_polygon(polygons, x, y1, z2, x2, y, z1, x, y, z);
 }
+
+void add_icosa( struct matrix * polygons,
+		double x, double y, double z, double s ){
+  double one = 1 * s / 2, phi = s * (1 + sqrt(5.0)) / 4;
+  // upper left pentagon
+  add_polygon(polygons, x-one, y+phi, z, x-phi, y, z-one, x, y+one, z-phi);
+  add_polygon(polygons, x-one, y+phi, z, x, y+one, z-phi, x+one, y+phi, z);
+  add_polygon(polygons, x-one, y+phi, z, x+one, y+phi, z, x, y+one, z+phi);
+  add_polygon(polygons, x-one, y+phi, z, x, y+one, z+phi, x-phi, y, z+one);
+  add_polygon(polygons, x-one, y+phi, z, x-phi, y, z+one, x-phi, y, z-one);
+  // middle ring
+  add_polygon(polygons, x-phi, y, z-one, x, y-one, z-phi, x, y+one, z-phi);
+  add_polygon(polygons, x, y+one, z-phi, x, y-one, z-phi, x+phi, y, z-one);
+  add_polygon(polygons, x+phi, y, z-one, x+one, y+phi, z, x, y+one, z-phi);
+  add_polygon(polygons, x+one, y+phi, z, x+phi, y, z-one, x+phi, y, z+one);
+  add_polygon(polygons, x+one, y+phi, z, x+phi, y, z+one, x, y+one, z+phi);
+  add_polygon(polygons, x, y+one, z+phi, x+phi, y, z+one, x, y-one, z+phi);
+  add_polygon(polygons, x, y+one, z+phi, x, y-one, z+phi, x-phi, y, z+one);
+  add_polygon(polygons, x-phi, y, z+one, x, y-one, z+phi, x-one, y-phi, z);
+  add_polygon(polygons, x-phi, y, z+one, x-one, y-phi, z, x-phi, y, z-one);
+  add_polygon(polygons, x-phi, y, z-one, x-one, y-phi, z, x, y-one, z-phi);
+  // bottom right pentagon
+  add_polygon(polygons, x+one, y-phi, z, x, y-one, z-phi, x-one, y-phi, z);
+  add_polygon(polygons, x+one, y-phi, z, x+phi, y, z-one, x, y-one, z-phi);
+  add_polygon(polygons, x+one, y-phi, z, x+phi, y, z+one, x+phi, y, z-one);
+  add_polygon(polygons, x+one, y-phi, z, x, y-one, z+phi, x+phi, y, z+one);
+  add_polygon(polygons, x+one, y-phi, z, x-one, y-phi, z, x, y-one, z+phi);
+}
   
 /*======== void add_sphere() ==========
   Inputs:   struct matrix * points

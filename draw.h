@@ -23,6 +23,8 @@ void add_octa( struct matrix * edges,
 	       double x, double y, double z, double side );
 void add_tetra( struct matrix * edges,
 		double x, double y, double z, double side );
+void add_icosa( struct matrix * edges,
+		double x, double y, double z, double side );
 void add_sphere( struct matrix * edges,
                  double cx, double cy, double cz,
                  double r, int step );

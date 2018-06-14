@@ -76,6 +76,12 @@ struct command
     } tetrahedron;
     struct {
       SYMTAB *constants;
+      double d[4];
+      double s;
+      SYMTAB *cs;
+    } icosahedron;
+    struct {
+      SYMTAB *constants;
       double p0[4],p1[4];
       SYMTAB *cs0,*cs1;
     } line;

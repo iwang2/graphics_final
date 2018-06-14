@@ -28,6 +28,7 @@ ID [a-zA-Z][a-zA-Z0-9_]*
 "box" {return BOX;}
 "octahedron" { return OCTAHEDRON; }
 "tetrahedron" { return TETRAHEDRON; }
+"icosahedron" { return ICOSAHEDRON; }
 "line" {return LINE;}
 "mesh" {return MESH;}
 "texture" {return TEXTURE;}
