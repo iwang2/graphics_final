@@ -261,13 +261,14 @@ void add_octa ( struct matrix * polygons,
 
 void add_tetra( struct matrix * polygons,
 		double x, double y, double z, double s ){
-  double
+  /*double
     x1 = x + s/2, z1 = z + sqrt(6.0)*s/3,
-    x2 = x - s/2, y1 = y + sqrt(6.0)*s/3, z2 = z + sqrt(6.0)*s/4;
-  add_polygon(polygons, x, y, z, x2, y, z1, x1, y, z1);
-  add_polygon(polygons, x, y1, z2, x, y, z, x2, y, z1);
-  add_polygon(polygons, x, y1, z2, x1, y, z1, x2, y, z1);
-  add_polygon(polygons, x, y1, z2, x2, y, z1, x, y, z);
+    x2 = x - s/2, y1 = y + sqrt(6.0)*s/3, z2 = z + sqrt(6.0)*s/4;*/
+  double one = s*0.5, phi = s / (2*sqrt(2.0));
+  add_polygon(polygons, x, y+one, z+phi, x-one, y, z-phi, x+one, y, z-phi);
+  add_polygon(polygons, x, y-one, z+phi, x+one, y, z-phi, x-one, y, z-phi);
+  add_polygon(polygons, x, y+one, z+phi, x+one, y, z-phi, x, y-one, z+phi);
+  add_polygon(polygons, x, y-one, z+phi, x-one, y, z-phi, x, y+one, z+phi);
 }
 
 void add_icosa( struct matrix * polygons,
