@@ -2,6 +2,7 @@
 Ida Wang, Period 5.
 
 ### Implemented Features
-1. Lighting commands with only a single light source (`ambient`, `light`, `constants`)
-2. New primtive shapes (3 different platonic solids: tetrahedron, octahedron, icosahedron)
-    - all are now centered at their center? centroid? (they can rotate in place instead of around a vertex)
+1. Lighting commands with only a single light source (`ambient`, `light`, `constants`).
+2. New primtive shapes (3 different platonic solids: tetrahedron, octahedron, icosahedron).
+    - All are now centered at their center? centroid? (they rotate in place instead of around a vertex).
+    - To view these shapes, run `thing.mdl` instead of the `simple_anim.mdl`. Currently the script is set to show an icosahedron, but it can be modified to show a tetrahedron or an octahedron as well.
