@@ -287,6 +287,7 @@ void my_main() {
 	set_value(lookup_symbol(current->name), current->value);
 	current = current->next;
       }
+      printf("making frame [%d]...\n", j);
     }
     for (i=0;i<lastop;i++) {
       //printf("%d: ",i);
@@ -472,10 +473,9 @@ void my_main() {
 	  xval = op[i].op.move.d[0];
 	  yval = op[i].op.move.d[1];
 	  zval = op[i].op.move.d[2];
-	  printf("Move: %6.2f %6.2f %6.2f",
-		 xval, yval, zval);
+	  //printf("Move: %6.2f %6.2f %6.2f", xval, yval, zval);
 	  if (op[i].op.move.p != NULL) {
-	    printf("\tknob: %s",op[i].op.move.p->name);
+	    //printf("\tknob: %s",op[i].op.move.p->name);
 	    SYMTAB * tab = op[i].op.move.p;
 	    double val = tab->s.value;
 	    xval *= val;
@@ -491,10 +491,9 @@ void my_main() {
 	  xval = op[i].op.scale.d[0];
 	  yval = op[i].op.scale.d[1];
 	  zval = op[i].op.scale.d[2];
-	  printf("Scale: %6.2f %6.2f %6.2f",
-		 xval, yval, zval);
+	  //printf("Scale: %6.2f %6.2f %6.2f", xval, yval, zval);
 	  if (op[i].op.scale.p != NULL) {
-	    printf("\tknob: %s",op[i].op.scale.p->name);
+	    //printf("\tknob: %s",op[i].op.scale.p->name);
 	    SYMTAB * tab = op[i].op.scale.p;
 	    double val = tab->s.value;
 	    xval *= val;
@@ -509,10 +508,9 @@ void my_main() {
 	case ROTATE:
 	  xval = op[i].op.rotate.axis;
 	  theta = op[i].op.rotate.degrees;
-	  printf("Rotate: axis: %6.2f degrees: %6.2f",
-		 xval, theta);
+	  //printf("Rotate: axis: %6.2f degrees: %6.2f", xval, theta);
 	  if (op[i].op.rotate.p != NULL) {
-	    printf("\tknob: %s",op[i].op.rotate.p->name);
+	    //printf("\tknob: %s",op[i].op.rotate.p->name);
 	    SYMTAB * tab = op[i].op.rotate.p;
 	    double val = tab->s.value;
 	    xval *= val;
@@ -560,7 +558,7 @@ void my_main() {
 	  ambient.blue = op[i].op.ambient.c[2];
 	  break;
 	} //end opcode switch
-      printf("\n");
+      //printf("\n");
     }//end operation loop
 
     if ( num_frames > 1 ) {
