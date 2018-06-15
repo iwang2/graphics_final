@@ -242,10 +242,21 @@ void add_box( struct matrix * polygons,
 
 void add_octa ( struct matrix * polygons,
 		double x, double y, double z, double s ) {
-  double
+  /*double
     x1 = x + s/2, y1 = y + s * sqrt(2.0) / 2, z1 = z - s/2,
-    x2 = x - s/2, y2 = y + s * sqrt(2.0), z2 = z + s/2;
-
+    x2 = x - s/2, y2 = y + s * sqrt(2.0), z2 = z + s/2;*/
+  double c = s * sqrt(2.0) / 2;
+  // top half
+  add_polygon(polygons, x, y+c, z, x, y, z-c, x+c, y, z);
+  add_polygon(polygons, x, y+c, z, x+c, y, z, x, y, z+c);
+  add_polygon(polygons, x, y+c, z, x, y, z+c, x-c, y, z);
+  add_polygon(polygons, x, y+c, z, x-c, y, z, x, y, z-c);
+  // bottom half
+  add_polygon(polygons, x, y-c, z, x, y, z-c, x-c, y, z);
+  add_polygon(polygons, x, y-c, z, x+c, y, z, x, y, z-c);
+  add_polygon(polygons, x, y-c, z, x, y, z+c, x+c, y, z);
+  add_polygon(polygons, x, y-c, z, x-c, y, z, x, y, z+c);
+  /*
   // bottom half
   add_polygon(polygons, x, y, z, x1, y1, z1, x2, y1, z1);
   add_polygon(polygons, x, y, z, x1, y1, z2, x1, y1, z1);
@@ -256,7 +267,7 @@ void add_octa ( struct matrix * polygons,
   add_polygon(polygons, x, y2, z, x2, y1, z1, x1, y1, z1);
   add_polygon(polygons, x, y2, z, x1, y1, z1, x1, y1, z2);
   add_polygon(polygons, x, y2, z, x1, y1, z2, x2, y1, z2);
-  add_polygon(polygons, x, y2, z, x2, y1, z2, x2, y1, z1);
+  add_polygon(polygons, x, y2, z, x2, y1, z2, x2, y1, z1);*/
 }
 
 void add_tetra( struct matrix * polygons,
